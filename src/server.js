@@ -14,6 +14,12 @@ app.use(cors()); // Habilita CORS para todas as rotas
 
 app.use(express.json()); // Parse de JSON
 
+// Add logging middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
 app.use("/", routes);
 
 // Iniciar o servidor
